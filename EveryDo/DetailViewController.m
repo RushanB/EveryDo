@@ -10,13 +10,17 @@
 
 @interface DetailViewController ()
 
+@property IBOutlet UILabel *titleLabel;
+@property IBOutlet UILabel *descriptionLabel;
+@property IBOutlet UILabel *priorityNumberLabel;
+
 @end
 
 @implementation DetailViewController
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem {
+- (void)setDetailItem:(Todo *)newDetailItem {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
             
@@ -29,7 +33,10 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        self.descriptionLabel.text = self.detailItem.todoDescription;
+        self.titleLabel.text = self.detailItem.title;
+        self.priorityNumberLabel.text = [NSString stringWithFormat:@"Priority: %i", self.detailItem.priorityNumber];
+        
     }
 }
 

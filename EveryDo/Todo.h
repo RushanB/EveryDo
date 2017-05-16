@@ -12,10 +12,10 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *todoDescription;
-@property (nonatomic, assign) int priority;
+@property (nonatomic, assign) int priorityNumber;
 @property (nonatomic, assign) BOOL isCompleted;
 
--(instancetype)initWithTitle:(NSString*)title andDescription:(NSString*)todoDescription andPriority:(int)priority andIsCompleted:(BOOL)isCompleted;
+-(instancetype)initWithTitle:(NSString*)title andDescription:(NSString*)todoDescription andPriority:(int)priorityNumber andIsCompleted:(BOOL)isCompleted;
 
 
 @end

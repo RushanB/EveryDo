@@ -8,10 +8,14 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "TodoTableViewCell.h"
+#import "Todo.h"
 
 @interface MasterViewController ()
 
+@property Todo *toDo;
 @property NSMutableArray *objects;
+
 @end
 
 @implementation MasterViewController
@@ -19,6 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.objects = [[NSMutableArray alloc]init];
+    
+    UISwipeGestureRecognizer *swipedR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:<#(nullable SEL)#>
+    
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
@@ -50,10 +58,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        self.toDo = self.objects[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController];
-        [controller setDetailItem:object];
+        [controller setDetailItem:self.toDo];
+    }else if([[segue identifier] isEqualToString:@"addItem"]){
+        NewViewController *nvc = (NewViewController *)[segue destinationViewController];
+        nvc.addItemDelegate = self;
     }
 }
 

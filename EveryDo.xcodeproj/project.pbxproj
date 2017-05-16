@@ -16,6 +16,7 @@
 		31A5A9421ECB4A5E00245986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31A5A9401ECB4A5E00245986 /* LaunchScreen.storyboard */; };
 		31A5A94B1ECB4E3D00245986 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A5A94A1ECB4E3D00245986 /* Todo.m */; };
 		31A5A94E1ECB611800245986 /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A5A94D1ECB611800245986 /* TodoTableViewCell.m */; };
+		31A5A9511ECB729200245986 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A5A9501ECB729200245986 /* NewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		31A5A94A1ECB4E3D00245986 /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
 		31A5A94C1ECB611800245986 /* TodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoTableViewCell.h; sourceTree = "<group>"; };
 		31A5A94D1ECB611800245986 /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
+		31A5A94F1ECB729200245986 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		31A5A9501ECB729200245986 /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,8 @@
 			children = (
 				31A5A9321ECB4A5E00245986 /* AppDelegate.h */,
 				31A5A9331ECB4A5E00245986 /* AppDelegate.m */,
+				31A5A94F1ECB729200245986 /* NewViewController.h */,
+				31A5A9501ECB729200245986 /* NewViewController.m */,
 				31A5A9351ECB4A5E00245986 /* MasterViewController.h */,
 				31A5A9361ECB4A5E00245986 /* MasterViewController.m */,
 				31A5A9381ECB4A5E00245986 /* DetailViewController.h */,
@@ -165,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A5A9511ECB729200245986 /* NewViewController.m in Sources */,
 				31A5A94B1ECB4E3D00245986 /* Todo.m in Sources */,
 				31A5A94E1ECB611800245986 /* TodoTableViewCell.m in Sources */,
 				31A5A9341ECB4A5E00245986 /* AppDelegate.m in Sources */,
