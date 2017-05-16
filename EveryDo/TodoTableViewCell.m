@@ -7,7 +7,15 @@
 //
 
 #import "TodoTableViewCell.h"
+@interface TodoTableViewCell()
 
+@property (nonatomic) Todo *toDo;
+
+@property (nonatomic) IBOutlet UILabel *labelTitle;
+@property (nonatomic) IBOutlet UILabel *lineDescription;
+@property (nonatomic) IBOutlet UILabel *priorityNumber;
+
+@end
 
 
 @implementation TodoTableViewCell
@@ -23,8 +31,13 @@
     // Configure the view for the selected state
 }
 
--(void)setTodo:(Todo *)toDo{
+-(void)setToDo:(Todo *)toDo{
     _toDo = toDo;
+    [self configure];
+    
+}
+-(void)configure{
+    
     NSString *string = [[self.toDo.todoDescription componentsSeparatedByString:@" "]objectAtIndex:0];
     
     if(self.toDo.isCompleted == NO){

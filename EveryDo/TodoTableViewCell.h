@@ -11,13 +11,7 @@
 
 @interface TodoTableViewCell : UITableViewCell
 
-@property (nonatomic) Todo *toDo;
-@property (nonatomic) IBOutlet UILabel *labelTitle;
-@property (nonatomic) IBOutlet UILabel *lineDescription;
-@property (nonatomic) IBOutlet UILabel *priorityNumber;
-
-
--(void)setTodo:(Todo *)toDo;
+-(void)setToDo:(Todo *)toDo;
 
 
 @end

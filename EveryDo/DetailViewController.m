@@ -36,7 +36,6 @@
         self.descriptionLabel.text = self.detailItem.todoDescription;
         self.titleLabel.text = self.detailItem.title;
         self.priorityNumberLabel.text = [NSString stringWithFormat:@"Priority: %i", self.detailItem.priorityNumber];
-        
     }
 }
 

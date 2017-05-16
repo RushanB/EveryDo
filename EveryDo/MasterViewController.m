@@ -26,12 +26,23 @@
     self.objects = [[NSMutableArray alloc]init];
     
     UISwipeGestureRecognizer *swipedR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedToDo:)];
-    [self.tableView.addGestureRecognizer:swipedR];
+    [self.tableView addGestureRecognizer:swipedR];
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    
+    
+    
+//        Todo *number1 = [[Todo alloc] initWithTitle:@"clean room"
+//                                 andDescription:@"vaccuum and wash windows"
+//                                    andPriority:8];
+//    
+//    
+//        [self.objects addObject:number1];
+//    
 }
 
 
@@ -48,12 +59,8 @@
 
 
 - (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
-    }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self performSegueWithIdentifier:@"addItem" sender:nil];
+    
 }
 
 
@@ -86,10 +93,10 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     self.toDo = self.objects[indexPath.row];
-    [cell setTodo:self.toDo];
+    [cell setToDo:self.toDo];
     //NSDate *object = self.objects[indexPath.row];
     //cell.textLabel.text = [object description];
     return cell;
@@ -127,10 +134,27 @@
 -(void)addNewToDo:(Todo *)newToDo{
     [self.objects addObject: newToDo];
     [self.objects removeObject: newToDo];
-    [self.objects insertObject:newToDo atIndex:0];
+    [self.objects insertObject: newToDo atIndex:0];
+    
     [self.tableView reloadData];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Deleting + Completing
+
+-(IBAction)swipedToDo:(UISwipeGestureRecognizer *)sender{
+    CGPoint curr = [sender locationInView:self.tableView];
+    NSIndexPath *index = [self.tableView indexPathForRowAtPoint:curr];
+    NSIndexPath *last = [NSIndexPath indexPathForRow:[self.objects count]-1 inSection:0];
+    
+    if(sender.direction == UISwipeGestureRecognizerDirectionRight){
+        Todo *doneToDo = self.objects[index.row];
+        if(doneToDo.isCompleted == NO){
+            doneToDo.isCompleted = YES;
+        }
+        [self tableView:self.tableView moveRowAtIndexPath:index toIndexPath:last];
+        [self.tableView reloadData];
+    }
+}
 
 @end

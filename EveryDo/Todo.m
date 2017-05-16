@@ -10,7 +10,7 @@
 
 @implementation Todo
 
-- (instancetype)initWithTitle:(NSString*)title andDescription:(NSString*)todoDescription andPriority:(int)priorityNumber andIsCompleted:(BOOL)isCompleted{
+- (instancetype)initWithTitle:(NSString*)title andDescription:(NSString*)todoDescription andPriority:(int)priorityNumber{
     self = [super init];
     if (self) {
         _title = title;

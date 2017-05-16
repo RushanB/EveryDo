@@ -30,10 +30,11 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)doneButton:(id)sender{
-    Todo *newToDoToAdd = [[Todo alloc]initWithTitle:self.titleTextField.text andDescription:self.descriptionTextField.text andPriority:[self.priorityTextField.text intValue] andIsCompleted:nil];
+- (IBAction)doneButton:(id)sender {
+    Todo *newToDoToAdd = [[Todo alloc]initWithTitle:self.titleTextField.text andDescription:self.descriptionTextField.text andPriority:[self.priorityTextField.text intValue]];
     [self.addItemDelegate addNewToDo:newToDoToAdd];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end
