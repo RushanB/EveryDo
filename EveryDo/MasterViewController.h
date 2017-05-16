@@ -11,7 +11,7 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController <AddItemProcotol>
+@interface MasterViewController : UITableViewController <AddItemProtocol>
 
 
 @end

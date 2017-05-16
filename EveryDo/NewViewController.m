@@ -10,6 +10,12 @@
 
 @interface NewViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *priorityTextField;
+@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
+
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+
 @end
 
 @implementation NewViewController
@@ -24,14 +30,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(IBAction)doneButton:(id)sender{
+    Todo *newToDoToAdd = [[Todo alloc]initWithTitle:self.titleTextField.text andDescription:self.descriptionTextField.text andPriority:[self.priorityTextField.text intValue] andIsCompleted:nil];
+    [self.addItemDelegate addNewToDo:newToDoToAdd];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-*/
 
 @end

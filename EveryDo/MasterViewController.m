@@ -25,7 +25,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.objects = [[NSMutableArray alloc]init];
     
-    UISwipeGestureRecognizer *swipedR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:<#(nullable SEL)#>
+    UISwipeGestureRecognizer *swipedR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedToDo:)];
+    [self.tableView.addGestureRecognizer:swipedR];
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
@@ -35,6 +36,8 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+     [self.tableView reloadData];
 }
 
 
@@ -84,9 +87,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    
+    self.toDo = self.objects[indexPath.row];
+    [cell setTodo:self.toDo];
+    //NSDate *object = self.objects[indexPath.row];
+    //cell.textLabel.text = [object description];
     return cell;
 }
 
@@ -106,5 +111,26 @@
     }
 }
 
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    if(sourceIndexPath != destinationIndexPath){
+        Todo *todoObject = [self.objects objectAtIndex:sourceIndexPath.row];
+        [self.objects removeObjectAtIndex:sourceIndexPath.row];
+        [self.objects insertObject:todoObject atIndex:destinationIndexPath.row];
+        [self.tableView reloadData];
+        
+    }
+}
+
+
+#pragma mark - Adding new Todo
+
+-(void)addNewToDo:(Todo *)newToDo{
+    [self.objects addObject: newToDo];
+    [self.objects removeObject: newToDo];
+    [self.objects insertObject:newToDo atIndex:0];
+    [self.tableView reloadData];
+}
+
+#pragma mark - Deleting + Completing
 
 @end
