@@ -137,7 +137,7 @@
     [self.objects insertObject: newToDo atIndex:0];
     
     [self.tableView reloadData];
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:true];
 }
 
 #pragma mark - Deleting + Completing

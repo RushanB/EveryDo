@@ -134,7 +134,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
                     <connections>
-                        <segue destination="IZK-Xc-dhe" kind="show" identifier="addItem" id="3Gl-D8-YJJ"/>
+                        <segue destination="IZK-Xc-dhe" kind="presentation" identifier="addItem" id="3Gl-D8-YJJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
